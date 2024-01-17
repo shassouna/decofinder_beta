@@ -2,7 +2,7 @@ import { useCallback } from "react";
 import { useRouter } from "next/router";
 import styles from "../../pages/index.module.css";
 
-const SuperUniversList = () => {
+const SuperUniversList = ({ Superuniverss }) => {
   const router = useRouter();
 
   const onSuperuniversClick = useCallback(() => {
@@ -15,78 +15,26 @@ const SuperUniversList = () => {
         <h2 className={styles.text14}>Les Megas Univers</h2>
       </div>
       <div className={styles.div8}>
-        <article className={styles.superunivers} onClick={onSuperuniversClick}>
-          <img className={styles.imgIcon4} alt="" src="/img2@2x.jpg" />
-          <div className={styles.name}>
-            <div className={styles.text15}>Arts de la table</div>
-          </div>
-        </article>
-        <article className={styles.superunivers} onClick={onSuperuniversClick}>
-          <img className={styles.imgIcon4} alt="" src="/img2@2x.jpg" />
-          <div className={styles.name}>
-            <div className={styles.text15}>Arts de la table</div>
-          </div>
-        </article>
-        <article className={styles.superunivers} onClick={onSuperuniversClick}>
-          <img className={styles.imgIcon4} alt="" src="/img2@2x.jpg" />
-          <div className={styles.name}>
-            <div className={styles.text15}>Arts de la table</div>
-          </div>
-        </article>
-        <article className={styles.superunivers} onClick={onSuperuniversClick}>
-          <img className={styles.imgIcon4} alt="" src="/img2@2x.jpg" />
-          <div className={styles.name}>
-            <div className={styles.text15}>Arts de la table</div>
-          </div>
-        </article>
-        <article className={styles.superunivers} onClick={onSuperuniversClick}>
-          <img className={styles.imgIcon4} alt="" src="/img2@2x.jpg" />
-          <div className={styles.name}>
-            <div className={styles.text15}>Arts de la table</div>
-          </div>
-        </article>
-        <article className={styles.superunivers} onClick={onSuperuniversClick}>
-          <img className={styles.imgIcon4} alt="" src="/img2@2x.jpg" />
-          <div className={styles.name}>
-            <div className={styles.text15}>Arts de la table</div>
-          </div>
-        </article>
-        <article className={styles.superunivers} onClick={onSuperuniversClick}>
-          <img className={styles.imgIcon4} alt="" src="/img2@2x.jpg" />
-          <div className={styles.name}>
-            <div className={styles.text15}>Arts de la table</div>
-          </div>
-        </article>
-        <article className={styles.superunivers} onClick={onSuperuniversClick}>
-          <img className={styles.imgIcon4} alt="" src="/img2@2x.jpg" />
-          <div className={styles.name}>
-            <div className={styles.text15}>Arts de la table</div>
-          </div>
-        </article>
-        <article className={styles.superunivers} onClick={onSuperuniversClick}>
-          <img className={styles.imgIcon4} alt="" src="/img2@2x.jpg" />
-          <div className={styles.name}>
-            <div className={styles.text15}>Arts de la table</div>
-          </div>
-        </article>
-        <article className={styles.superunivers} onClick={onSuperuniversClick}>
-          <img className={styles.imgIcon4} alt="" src="/img2@2x.jpg" />
-          <div className={styles.name}>
-            <div className={styles.text15}>Arts de la table</div>
-          </div>
-        </article>
-        <article className={styles.superunivers} onClick={onSuperuniversClick}>
-          <img className={styles.imgIcon4} alt="" src="/img2@2x.jpg" />
-          <div className={styles.name}>
-            <div className={styles.text15}>Arts de la table</div>
-          </div>
-        </article>
-        <article className={styles.superunivers} onClick={onSuperuniversClick}>
-          <img className={styles.imgIcon4} alt="" src="/img2@2x.jpg" />
-          <div className={styles.name}>
-            <div className={styles.text15}>Arts de la table</div>
-          </div>
-        </article>
+        {Superuniverss.map((superunivers, index) => (
+          <article
+            key={superunivers["id"]}
+            className={styles.superunivers}
+            onClick={onSuperuniversClick}
+          >
+            <img
+              className={styles.imgIcon4}
+              alt=""
+              src={
+                superunivers["attributes"]["image"]["data"]["attributes"]["url"]
+              }
+            />
+            <div className={styles.name}>
+              <div className={styles.text15}>
+                {superunivers["attributes"]["LIB"]}
+              </div>
+            </div>
+          </article>
+        ))}
       </div>
     </>
   );

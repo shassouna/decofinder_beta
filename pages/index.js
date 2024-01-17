@@ -8,8 +8,9 @@ import CommuniquesDePresseList from "../components/elements/CommuniquesDePresseL
 import DescriptionHomePage from "../components/elements/DescriptionHomePage";
 import BigPicture from "../components/elements/BigPicture";
 import FreeSection from "../components/elements/FreeSection";
+import axios from "axios";
 
-const Index = () => {
+const Index = ({ Superuniverss, Nouveautes }) => {
   return (
     <>
       <section className={styles.bigpicture}>
@@ -19,13 +20,13 @@ const Index = () => {
         <FourLinksHomePage />
       </section>
       <section className={styles.megaunivers}>
-        <SuperUniversList />
+        <SuperUniversList Superuniverss={Superuniverss} />
       </section>
       <section className={styles.pub}>
         <Pub />
       </section>
       <section className={styles.products}>
-        <ProductsList title2={"Les Nouveautés"} />
+        <ProductsList title2={"Les Nouveautés"} Products={Nouveautes} />
       </section>
       <section className={styles.inspirations}>
         <InspirationsList />
@@ -44,3 +45,51 @@ const Index = () => {
 };
 
 export default Index;
+
+export async function getStaticProps() {
+  // Import qs
+  const qs = require("qs");
+
+  try {
+    // QUERIES
+    const querySuperunivers = qs.stringify({
+      populate: ["image"],
+      locale: "fr",
+    });
+    const queryNouveautes = qs.stringify({
+      populate: [
+        "images",
+        "exposant.logo",
+        "typeprod",
+        "lienrevendeurproduits.exposant.logo",
+      ],
+      filters: {
+        NOUVEAUTE: { $eq: 1 },
+      },
+      locale: "fr",
+    });
+    // URLS
+    const apiSuperuniversUrl = `${process.env.BASE_URL_SERVER}/api/superuniverss?${querySuperunivers}`;
+    const apiNouveautesUrl = `${process.env.BASE_URL_SERVER}/api/produits?${queryNouveautes}`;
+    // CALLS
+    const apiSuperuniversUrlRes = await axios.get(apiSuperuniversUrl);
+    const apiNouveautesUrlRes = await axios.get(apiNouveautesUrl);
+
+    return {
+      props: {
+        Superuniverss: apiSuperuniversUrlRes["data"]["data"],
+        Nouveautes: apiNouveautesUrlRes["data"]["data"],
+      },
+    };
+  } catch (error) {
+    console.error("Erreur lors de la récupération des données :", error);
+
+    // Vous pouvez également renvoyer un objet props avec une propriété vide
+    return {
+      props: {
+        Superuniverss: [],
+        Nouveautes: [],
+      },
+    };
+  }
+}
