@@ -1,0 +1,58 @@
+.custom_select {
+  position: relative;
+  width: 200px; /* Ajustez la largeur selon vos besoins */
+}
+
+#pet_select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  background: url("/flag-fr.png") no-repeat right 10px center;
+  background-size: 20px; /* Ajustez la taille de l'image selon vos besoins */
+}
+
+.select_styling {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 10px;
+}
+
+#pet_select:hover {
+  border-color: #666;
+}
+
+#pet_select option {
+  padding: 10px;
+}
+
+#pet_select option[value="fr"] {
+  background-image: url("/flag-fr.png");
+}
+
+#pet_select option[value="gbr"] {
+  background-image: url("/flag-gbr.png");
+}
+
+#pet_select option[value="es"] {
+  background-image: url("/flag-es.png");
+}
+
+#pet_select option[value="de"] {
+  background-image: url("/flag-de.png");
+}
+
+#pet_select option[value="it"] {
+  background-image: url("/flag-it.png");
+}

@@ -1,0 +1,176 @@
+@import url("https://fonts.googleapis.com/css2?family=Elza:wght@400;500;600&display=swap");
+body {
+  margin: 0;
+  line-height: normal;
+}
+:root {
+  /* fonts */
+  --ancien-base-textbaseboldordi: Elza;
+
+  /* font sizes */
+  --textbold-size: 16px;
+  --textlargebold-size: 20px;
+  --ancien-large-textlargeboldodri-size: 24px;
+  --h2-size: 27px;
+  --font-size-16xl: 35px;
+  --ancien-base-textbaseboldordi-size: 18px;
+  --ancien-normal-textnormaltablette-size: 12px;
+  --ancien-base-textbasetablette-size: 14px;
+  --display-size: 38px;
+
+  /* Colors */
+  --blanc: #fafafa;
+  --gray-dark-gray: #7e7e7e;
+  --white-black-black: #0f161d;
+  --base-green: #61b582;
+  --base-dark-green: #2a3c4c;
+  --gray-light-gray-200: #e2e3e6;
+  --gris3: #dbdbdb;
+  --white-black-pure-white: #fff;
+  --gray-light-gray-50: #f4f6fa;
+  --gray-light-gray-100: #eaedf1;
+  --vertclair: #e7f0ed;
+  --grisfonc3: #bcc1c6;
+  --brand-color-primary: #ff385c;
+  --rouge: #cf4a4a;
+  --color-plum: #f8b4e4;
+
+  /* Spacing */
+  --padding-width: 70px;
+  --bloc-img-min-widthblocarticle: 277px;
+  --bloc-img-max-widthblocarticle: 301.3999938964844px;
+
+  /* Gaps */
+  --gap-31xl: 50px;
+  --gap-xl: 20px;
+  --gap-3xs: 10px;
+  --gap-mini: 15px;
+  --gap-11xl: 30px;
+  --gap-7xs: 6px;
+  --gap-8xs: 5px;
+  --gap-6xs: 7px;
+  --gap-10xs: 3px;
+  --gap-base: 16px;
+  --gap-21xl: 40px;
+  --gap-0: 0px;
+
+  /* Paddings */
+  --padding-31xl: 50px;
+  --padding-51xl: 70px;
+  --padding-3xs: 10px;
+  --padding-7xs: 6px;
+  --padding-11xs: 2px;
+  --padding-xl: 20px;
+  --padding-5xs: 8px;
+  --padding-5xl: 24px;
+  --padding-lg: 18px;
+  --padding-11xl: 30px;
+  --padding-base: 16px;
+  --padding-mini: 15px;
+  --padding-sm: 14px;
+  --padding-8xs: 5px;
+  --padding-61xl: 80px;
+  --padding-6xl: 25px;
+  --padding-21xl: 40px;
+
+  /* Border radiuses */
+  --br-13xl: 32px;
+  --br-base: 16px;
+  --br-3xs: 10px;
+  --br-31xl: 50px;
+  --br-8xs: 5px;
+  --br-21xl: 40px;
+  --br-mini: 15px;
+  --br-xl: 20px;
+  --br-81xl: 100px;
+
+  /* Effects */
+  --effect: 0px 0px 20px #273d3b;
+  --ombre: 0px 0px 40px #273d3b;
+  --ombre2: 0px 0px 20px rgba(39, 61, 59, 0.2);
+
+  /*----------Menu----------*/
+
+  /* fonts */
+  --ancien-base-textbaseboldordi: Elza;
+
+  /* font sizes */
+  --ancien-normal-textnormalordi-size: 16px;
+  --ancien-base-textbaseboldordi-size: 18px;
+
+  /* Colors */
+  --grisclair: #f4f6fa;
+  --blanc: #fafafa;
+  --gray-dark-gray: #7e7e7e;
+  --grisclairfoncbackground: #eaedf1;
+  --base-dark-green: #2a3c4c;
+  --vert: #61b582;
+  --gray-light-gray-200: #e2e3e6;
+
+  /* Spacing */
+  --padding-width: 70px;
+
+  /* Gaps */
+  --gap-xl: 20px;
+  --gap-6xs: 7px;
+  --gap-8xs: 5px;
+  --gap-7xs: 6px;
+  --gap-3xl: 22px;
+  --gap-mini: 15px;
+
+  /* Paddings */
+  --padding-3xs: 10px;
+  --padding-xl: 20px;
+  --padding-51xl: 70px;
+  --padding-mini: 15px;
+  --padding-lg: 18px;
+  --padding-3xl: 22px;
+
+  /* Border radiuses */
+  --br-3xs: 10px;
+  --br-31xl: 50px;
+
+  /*----------Footer----------*/
+
+  /* fonts */
+  --ancien-base-textbaseordi: Elza;
+
+  /* font sizes */
+  --textbold-size: 16px;
+  --ancien-base-textbaseordi-size: 18px;
+  --textbold1-size: 20px;
+  --ancien-base-textbaseboldtablette-size: 14px;
+
+  /* Colors */
+  --blanc: #fafafa;
+  --grismedium: #7e7e7e;
+  --grisclair: #f4f6fa;
+  --grisclairfoncbackground: #eaedf1;
+  --vertclair: #e7f0ed;
+  --vert: #61b582;
+  --base-dark-green: #2a3c4c;
+  --jauneclair: #fdfaef;
+  --blancpure: #fff;
+
+  /* Spacing */
+  --padding-width: 70px;
+
+  /* Gaps */
+  --gap-mini: 15px;
+  --gap-8xs: 5px;
+  --gap-5xs: 8px;
+  --gap-3xs: 10px;
+  --gap-lg: 18px;
+
+  /* Paddings */
+  --padding-51xl: 70px;
+  --padding-3xs: 10px;
+  --padding-8xs: 5px;
+  --padding-xl: 20px;
+  --padding-mini: 15px;
+
+  /* Border radiuses */
+  --br-mini: 15px;
+  --br-3xs: 10px;
+  --br-5xs: 8px;
+}
