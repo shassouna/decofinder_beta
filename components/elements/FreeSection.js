@@ -2,7 +2,8 @@ import { useCallback } from "react";
 import { useRouter } from "next/router";
 import styles from "../../pages/index.module.css";
 
-const Index = () => {
+const Index = ({ Rendezvous, Designers, Agendadecodesigns, Selection }) => {
+  console.log(Selection);
   const router = useRouter();
 
   const onBoutonsContainerClick = useCallback(() => {
@@ -79,7 +80,9 @@ const Index = () => {
         <div className={styles.selections1}>
           <img className={styles.divIcon} alt="" src="/div1@2x.jpg" />
           <div className={styles.div54}>
-            <div className={styles.text92}>Sélections Été 2023</div>
+            <div className={styles.text92}>
+              {Selection["attributes"]["titre"]}
+            </div>
             <div className={styles.boutons8} onClick={onBoutonsContainerClick}>
               <div className={styles.div4}>
                 <img className={styles.laurelIcon} alt="" src="/frame31.svg" />
@@ -119,44 +122,19 @@ const Index = () => {
             <img className={styles.divItem} alt="" src="/vector-521.svg" />
             <div className={styles.div63}>
               <div className={styles.div64}>
-                <div
-                  className={styles.calendar}
-                  onClick={onCalendarContainerClick}
-                >
-                  <div className={styles.text99}>12/07 - 23/08</div>
-                  <div className={styles.text100}>
-                    Nocturnes au parc du Château de l’Islette
+                {Agendadecodesigns.map((Agendadecodesign) => (
+                  <div
+                    className={styles.calendar}
+                    onClick={onCalendarContainerClick}
+                  >
+                    <div className={styles.text99}>
+                      {`${Agendadecodesign["attributes"]["date_debut"]} → ${Agendadecodesign["attributes"]["date_fin"]}`}
+                    </div>
+                    <div className={styles.text100}>
+                      {Agendadecodesign["attributes"]["titre"]}
+                    </div>
                   </div>
-                </div>
-                <div
-                  className={styles.calendar}
-                  onClick={onCalendarContainerClick}
-                >
-                  <div className={styles.text99}>12/07 - 23/08</div>
-                  <div className={styles.text100}>
-                    Nocturnes au parc du Château de l’Islette
-                  </div>
-                </div>
-              </div>
-              <div className={styles.div64}>
-                <div
-                  className={styles.calendar}
-                  onClick={onCalendarContainerClick}
-                >
-                  <div className={styles.text99}>12/07 - 23/08</div>
-                  <div className={styles.text100}>
-                    Nocturnes au parc du Château de l’Islette
-                  </div>
-                </div>
-                <div
-                  className={styles.calendar}
-                  onClick={onCalendarContainerClick}
-                >
-                  <div className={styles.text99}>12/07 - 23/08</div>
-                  <div className={styles.text100}>
-                    Nocturnes au parc du Château de l’Islette
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
             <a
@@ -177,18 +155,19 @@ const Index = () => {
             src="/-fixed-aspect-ratio-spacer-variants2@2x.jpg"
           />
           <div className={styles.div67}>
-            <div className={styles.text108}>Du 03/07 au 24/09 2023</div>
+            <div className={styles.text108}>
+              {`Du ${Rendezvous["attributes"]["date_debut"]} au ${Rendezvous["attributes"]["date_fin"]}`}
+            </div>
+            <div className={styles.text109}>Le Rendez-vous</div>
             <div className={styles.text109}>
-              Arles Les Rencontres de la Photographie
+              {Rendezvous["attributes"]["titre"]}
             </div>
             <p className={styles.text110}>
-              À travers plus de quarante expositions installées dans divers
-              lieux patrimoniaux exceptionnels de la ville, les Rencontres
-              d'Arles...
+              {Rendezvous["attributes"]["description"]}
             </p>
             <div className={styles.boutons10} onClick={onBoutonsContainerClick}>
               <div className={styles.text1}>Lire la suite</div>
-              <img className={styles.laurelIcon} alt="" src="/frame141.svg" />
+              <img className={styles.laurelIcon} alt="" src="/Icon.svg" />
             </div>
           </div>
         </div>
@@ -202,54 +181,16 @@ const Index = () => {
             <span> - Le mag déco</span>
           </div>
           <div className={styles.div69}>
-            <img
-              className={styles.fixedAspectRatioSpacerVar127}
-              alt=""
-              src="/-fixed-aspect-ratio-spacer-variants3@2x.jpg"
-              onClick={onFixedAspectRatioSpacerVar127Click}
-            />
-            <img
-              className={styles.fixedAspectRatioSpacerVar127}
-              alt=""
-              src="/-fixed-aspect-ratio-spacer-variants3@2x.jpg"
-              onClick={onFixedAspectRatioSpacerVar128Click}
-            />
-            <img
-              className={styles.fixedAspectRatioSpacerVar127}
-              alt=""
-              src="/-fixed-aspect-ratio-spacer-variants3@2x.jpg"
-              onClick={onFixedAspectRatioSpacerVar129Click}
-            />
-            <img
-              className={styles.fixedAspectRatioSpacerVar127}
-              alt=""
-              src="/-fixed-aspect-ratio-spacer-variants3@2x.jpg"
-              onClick={onFixedAspectRatioSpacerVar130Click}
-            />
-            <img
-              className={styles.fixedAspectRatioSpacerVar127}
-              alt=""
-              src="/-fixed-aspect-ratio-spacer-variants3@2x.jpg"
-              onClick={onFixedAspectRatioSpacerVar131Click}
-            />
-            <img
-              className={styles.fixedAspectRatioSpacerVar127}
-              alt=""
-              src="/-fixed-aspect-ratio-spacer-variants3@2x.jpg"
-              onClick={onFixedAspectRatioSpacerVar132Click}
-            />
-            <img
-              className={styles.fixedAspectRatioSpacerVar127}
-              alt=""
-              src="/-fixed-aspect-ratio-spacer-variants3@2x.jpg"
-              onClick={onFixedAspectRatioSpacerVar133Click}
-            />
-            <img
-              className={styles.fixedAspectRatioSpacerVar127}
-              alt=""
-              src="/-fixed-aspect-ratio-spacer-variants3@2x.jpg"
-              onClick={onFixedAspectRatioSpacerVar134Click}
-            />
+            {Designers.map((designer, index) => (
+              <img
+                className={styles.fixedAspectRatioSpacerVar127}
+                alt=""
+                src={
+                  designer["attributes"]["image"]["data"]["attributes"]["url"]
+                }
+                onClick={onFixedAspectRatioSpacerVar127Click}
+              />
+            ))}
           </div>
         </div>
         <div className={styles.div70}>

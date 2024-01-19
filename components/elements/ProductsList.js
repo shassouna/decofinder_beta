@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import styles from "../../pages/index.module.css";
 
 const ProductsList = ({ title, title2, nbProducts, Products }) => {
-  console.log(Products);
   const router = useRouter();
 
   const onImgImageClick = useCallback(() => {
@@ -131,7 +130,7 @@ const ProductsList = ({ title, title2, nbProducts, Products }) => {
       {title2 && <div className={styles.text28}>{title2}</div>}
       <div className={styles.div8}>
         {Products.map((product, index) => (
-          <article className={styles.articlep}>
+          <article key={product["id"]} className={styles.articlep}>
             <img
               className={styles.imgIcon16}
               alt=""
