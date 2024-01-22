@@ -19,6 +19,7 @@ const Index = ({
   Rendezvous,
   Agendadecodesigns,
   Designers,
+  Freesections,
 }) => {
   return (
     <>
@@ -50,6 +51,7 @@ const Index = ({
         <FreeSection
           Selection={Selection}
           Rendezvous={Rendezvous}
+          Freesections={Freesections}
           Designers={Designers}
           Agendadecodesigns={Agendadecodesigns}
         ></FreeSection>
@@ -102,6 +104,16 @@ export async function getStaticProps() {
       },
       locale: "fr",
     });
+    const queryFreesections = qs.stringify({
+      populate: ["image"],
+      filters: {
+        $and: [
+          { type: { $notContains: ["r", "d", "v"] } },
+          { type: { $notContains: ["a", "g"] } },
+        ],
+      },
+      locale: "fr",
+    });
     const queryDesigners = qs.stringify({
       populate: ["image"],
       locale: "fr",
@@ -122,7 +134,7 @@ export async function getStaticProps() {
       locale: "fr",
     });
     // URLS
-    const apiFourProductsUrl = `${process.env.BASE_URL_SERVER}/api/produits?${queryFourProducts}`;
+    const apiFourproductsUrl = `${process.env.BASE_URL_SERVER}/api/produits?${queryFourProducts}`;
     const apiSuperuniversUrl = `${process.env.BASE_URL_SERVER}/api/superuniverss?${querySuperunivers}`;
     const apiNouveautesUrl = `${process.env.BASE_URL_SERVER}/api/produits?${queryNouveautes}`;
     const apiCommuniquesUrl = `${process.env.BASE_URL_SERVER}/api/communiques?${queryCommuniques}`;
@@ -130,8 +142,9 @@ export async function getStaticProps() {
     const apiRendezvousUrl = `${process.env.BASE_URL_SERVER}/api/section-libres?${queryRendezVous}`;
     const apiAgendadecodesignUrl = `${process.env.BASE_URL_SERVER}/api/section-libres?${queryAgendadecodesign}`;
     const apiDesignersUrl = `${process.env.BASE_URL_SERVER}/api/designer-mags?${queryDesigners}`;
+    const apiFreesectionsUrl = `${process.env.BASE_URL_SERVER}/api/section-libres?${queryFreesections}`;
     // CALLS
-    const apiFourProductsUrlRes = await axios.get(apiFourProductsUrl);
+    const apiFourproductsUrlRes = await axios.get(apiFourproductsUrl);
     const apiSuperuniversUrlRes = await axios.get(apiSuperuniversUrl);
     const apiNouveautesUrlRes = await axios.get(apiNouveautesUrl);
     const apiCommuniquesUrlRes = await axios.get(apiCommuniquesUrl);
@@ -139,10 +152,11 @@ export async function getStaticProps() {
     const apiRendezvousUrlRes = await axios.get(apiRendezvousUrl);
     const apiAgendadecodesignUrlRes = await axios.get(apiAgendadecodesignUrl);
     const apiDesignersUrlRes = await axios.get(apiDesignersUrl);
+    const apiFreesectionsUrlRes = await axios.get(apiFreesectionsUrl);
 
     return {
       props: {
-        FourLinks: apiFourProductsUrlRes["data"]["data"],
+        FourLinks: apiFourproductsUrlRes["data"]["data"],
         Superuniverss: apiSuperuniversUrlRes["data"]["data"],
         Nouveautes: apiNouveautesUrlRes["data"]["data"],
         Communiques: apiCommuniquesUrlRes["data"]["data"],
@@ -150,6 +164,7 @@ export async function getStaticProps() {
         Rendezvous: apiRendezvousUrlRes["data"]["data"][0],
         Agendadecodesigns: apiAgendadecodesignUrlRes["data"]["data"],
         Designers: apiDesignersUrlRes["data"]["data"],
+        Freesections: apiFreesectionsUrlRes["data"]["data"],
       },
     };
   } catch (error) {
@@ -158,14 +173,15 @@ export async function getStaticProps() {
     // Vous pouvez également renvoyer un objet props avec une propriété vide
     return {
       props: {
+        FourLinks: [],
         Superuniverss: [],
         Nouveautes: [],
-        FourLinks: [],
         Communiques: [],
         Selection: [],
         Rendezvous: [],
         Agendadecodesigns: [],
         Designers: [],
+        Freesections: [],
       },
     };
   }

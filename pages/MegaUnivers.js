@@ -3,10 +3,11 @@ import { useRouter } from "next/router";
 import styles from "./MegaUnivers.module.css";
 import Nav from "../components/layouts/Nav";
 import CategoriesList from "../components/elements/CategoriesList";
-
+import axios from "axios";
 let Items = ["Su"];
 
-const MegaUnivers = () => {
+const MegaUnivers = ({ Superunivers, Univers }) => {
+  console.log(Univers);
   const router = useRouter();
 
   const onCardClick = useCallback(() => {
@@ -58,37 +59,18 @@ const MegaUnivers = () => {
           <div className={styles.div2}>
             <div className={styles.title}>
               <h1 className={styles.text1}>
-                Imprégnateurs saturateurs - bricolage
+                {Superunivers["attributes"]["LIB"]}
               </h1>
+              <div className={styles.productsnumber}>(9 produits)</div>
             </div>
-            <div className={styles.productsnumber}>(9 produits)</div>
           </div>
           <img className={styles.divChild} alt="" src="/vector-5.svg" />
-          <p className={styles.paragraph}>
-            <span className={styles.decofinderVousPropose}>
-              Decofinder vous propose un univers de bricolage sous l'angle du
-              nettoyage, de l'entretien et des décapants. Par exemple rénover,
-              retravailler ou embellir le cuir. Nous vous faisons découvrir des
-              marques et des articles spécifiques pour décaper et embellir
-              toutes surfaces de cuir. Assouplisseur de cuir, des cirages avec
-              des fonctions différentes.
-            </span>
-            <span className={styles.decofinderVousPropose}>
-              Dans notre rubrique bricolage / entretien, nous mettons en avant
-              tous les produits qui tournent autour du bois : des produits
-              hydofuges qui imperméabilisent, protègent de l'humidité; d'autres
-              comme les imprégnateurs qui protègent, masquent et décorent en une
-              seule couche.
-            </span>
-            <span className={styles.decofinderVousPropose}>
-              La catégorie des saturateurs de bois protègent par exemple votre
-              terrasse contre les agressions climatiques ( intempéries, UV ) et
-              imprègnent le bois par saturation de fibres. Choix idéal pour les
-              caillebotis et terrasses, car ces saturateurs apportent une
-              protection nourrissante et accompagnent le bois dans son
-              évolution.
-            </span>
-          </p>
+          <div
+            className={styles.paragraph}
+            dangerouslySetInnerHTML={{
+              __html: Superunivers["attributes"]["DESCR"],
+            }}
+          ></div>
         </div>
       </section>
       <section className={styles.universsuperunivers}>
@@ -96,141 +78,26 @@ const MegaUnivers = () => {
           <h2 className={styles.title1}>Les univers bricolage</h2>
         </div>
         <div className={styles.univers}>
-          <article className={styles.card} onClick={onCardClick}>
-            <div className={styles.img}>
-              <img
-                className={styles.fixedAspectRatioSpacerVar}
-                alt=""
-                src="/-fixed-aspect-ratio-spacer-variants6@2x.jpg"
-              />
-              <div className={styles.badge1}>
-                <div className={styles.text}>Inspiration</div>
+          {Univers.map((univer, index) => (
+            <article
+              key={univer["id"]}
+              className={styles.card}
+              onClick={onCardClick}
+            >
+              <div className={styles.img}>
+                <img
+                  className={styles.imgIcon16}
+                  alt=""
+                  src={
+                    univer["attributes"]["image"]["data"]["attributes"]["url"]
+                  }
+                />
               </div>
-            </div>
-            <div className={styles.div4}>
-              <div className={styles.name}>Bricolage</div>
-            </div>
-          </article>
-          <article className={styles.card} onClick={onCard1Click}>
-            <div className={styles.img}>
-              <img
-                className={styles.fixedAspectRatioSpacerVar}
-                alt=""
-                src="/-fixed-aspect-ratio-spacer-variants6@2x.jpg"
-              />
-              <div className={styles.badge1}>
-                <div className={styles.text}>Inspiration</div>
+              <div className={styles.div4}>
+                <div className={styles.name}>{univer["attributes"]["LIB"]}</div>
               </div>
-            </div>
-            <div className={styles.div4}>
-              <div className={styles.name}>Bricolage</div>
-            </div>
-          </article>
-          <article className={styles.card} onClick={onCard2Click}>
-            <div className={styles.img}>
-              <img
-                className={styles.fixedAspectRatioSpacerVar}
-                alt=""
-                src="/-fixed-aspect-ratio-spacer-variants6@2x.jpg"
-              />
-              <div className={styles.badge1}>
-                <div className={styles.text}>Inspiration</div>
-              </div>
-            </div>
-            <div className={styles.div4}>
-              <div className={styles.name}>Bricolage</div>
-            </div>
-          </article>
-          <article className={styles.card} onClick={onCard3Click}>
-            <div className={styles.img}>
-              <img
-                className={styles.fixedAspectRatioSpacerVar}
-                alt=""
-                src="/-fixed-aspect-ratio-spacer-variants6@2x.jpg"
-              />
-              <div className={styles.badge1}>
-                <div className={styles.text}>Inspiration</div>
-              </div>
-            </div>
-            <div className={styles.div4}>
-              <div className={styles.name}>Bricolage</div>
-            </div>
-          </article>
-          <article className={styles.card} onClick={onCard4Click}>
-            <div className={styles.img}>
-              <img
-                className={styles.fixedAspectRatioSpacerVar}
-                alt=""
-                src="/-fixed-aspect-ratio-spacer-variants7@2x.jpg"
-              />
-              <div className={styles.badge1}>
-                <div className={styles.text}>Inspiration</div>
-              </div>
-            </div>
-            <div className={styles.div4}>
-              <div className={styles.name}>Bricolage</div>
-            </div>
-          </article>
-          <article className={styles.card} onClick={onCard5Click}>
-            <div className={styles.img}>
-              <img
-                className={styles.fixedAspectRatioSpacerVar}
-                alt=""
-                src="/-fixed-aspect-ratio-spacer-variants7@2x.jpg"
-              />
-              <div className={styles.badge1}>
-                <div className={styles.text}>Inspiration</div>
-              </div>
-            </div>
-            <div className={styles.div4}>
-              <div className={styles.name}>Bricolage</div>
-            </div>
-          </article>
-          <article className={styles.card} onClick={onCard6Click}>
-            <div className={styles.img}>
-              <img
-                className={styles.fixedAspectRatioSpacerVar}
-                alt=""
-                src="/-fixed-aspect-ratio-spacer-variants7@2x.jpg"
-              />
-              <div className={styles.badge1}>
-                <div className={styles.text}>Inspiration</div>
-              </div>
-            </div>
-            <div className={styles.div4}>
-              <div className={styles.name}>Bricolage</div>
-            </div>
-          </article>
-          <article className={styles.card} onClick={onCard7Click}>
-            <div className={styles.img}>
-              <img
-                className={styles.fixedAspectRatioSpacerVar}
-                alt=""
-                src="/-fixed-aspect-ratio-spacer-variants7@2x.jpg"
-              />
-              <div className={styles.badge1}>
-                <div className={styles.text}>Inspiration</div>
-              </div>
-            </div>
-            <div className={styles.div4}>
-              <div className={styles.name}>Bricolage</div>
-            </div>
-          </article>
-          <article className={styles.card} onClick={onCard8Click}>
-            <div className={styles.img}>
-              <img
-                className={styles.fixedAspectRatioSpacerVar}
-                alt=""
-                src="/-fixed-aspect-ratio-spacer-variants8@2x.jpg"
-              />
-              <div className={styles.badge1}>
-                <div className={styles.text}>Inspiration</div>
-              </div>
-            </div>
-            <div className={styles.div4}>
-              <div className={styles.name}>Bricolage</div>
-            </div>
-          </article>
+            </article>
+          ))}
         </div>
       </section>
       <section className={styles.universsuperunivers}>
@@ -259,3 +126,41 @@ const MegaUnivers = () => {
 };
 
 export default MegaUnivers;
+
+export async function getStaticProps() {
+  // Import qs
+  const qs = require("qs");
+
+  try {
+    // QUERIES
+    const querySuperunivers = qs.stringify({
+      populate: ["univers.image", "univers.categories.image"],
+      locale: "fr",
+    });
+    // URLS
+    const apiSuperuniversUrl = `${process.env.BASE_URL_SERVER}/api/superuniverss/1?${querySuperunivers}`;
+    // CALLS
+    const apiSuperuniversUrlRes = await axios.get(apiSuperuniversUrl);
+
+    // Logique
+    const Univers =
+      apiSuperuniversUrlRes["data"]["data"]["attributes"]["univers"]["data"];
+
+    return {
+      props: {
+        Superunivers: apiSuperuniversUrlRes["data"]["data"],
+        Univers: Univers,
+      },
+    };
+  } catch (error) {
+    console.error("Erreur lors de la récupération des données :", error);
+
+    // Vous pouvez également renvoyer un objet props avec une propriété vide
+    return {
+      props: {
+        Superunivers: [],
+        Univers: [],
+      },
+    };
+  }
+}

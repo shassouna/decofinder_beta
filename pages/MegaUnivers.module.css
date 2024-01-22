@@ -433,3 +433,17 @@
     justify-content: flex-start;
   }
 }
+.imgIcon16 {
+  align-self: stretch;
+  position: relative;
+}
+.imgIcon16 {
+  border-radius: var(--br-base);
+  max-width: 100%;
+  overflow: hidden;
+  height: 277px;
+  flex-shrink: 0;
+  object-fit: cover;
+  cursor: pointer;
+  z-index: 0;
+}

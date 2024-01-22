@@ -2,8 +2,13 @@ import { useCallback } from "react";
 import { useRouter } from "next/router";
 import styles from "../../pages/index.module.css";
 
-const Index = ({ Rendezvous, Designers, Agendadecodesigns, Selection }) => {
-  console.log(Selection);
+const Index = ({
+  Rendezvous,
+  Freesections,
+  Designers,
+  Agendadecodesigns,
+  Selection,
+}) => {
   const router = useRouter();
 
   const onBoutonsContainerClick = useCallback(() => {
@@ -53,6 +58,21 @@ const Index = ({ Rendezvous, Designers, Agendadecodesigns, Selection }) => {
   return (
     <>
       <div className={styles.div50}>
+        <div className={styles.selections1}>
+          <img className={styles.divIcon} alt="" src="/div1@2x.jpg" />
+          <div className={styles.div54}>
+            <div className={styles.text92}>
+              {Selection["attributes"]["titre"]}
+            </div>
+            <div className={styles.boutons8} onClick={onBoutonsContainerClick}>
+              <div className={styles.div4}>
+                <img className={styles.laurelIcon} alt="" src="/frame31.svg" />
+                <div className={styles.text4}>Voir la sélection</div>
+              </div>
+              <img className={styles.icon} alt="" src="/frame17.svg" />
+            </div>
+          </div>
+        </div>
         <div className={styles.newexposants}>
           <div className={styles.div51}>
             <img className={styles.divIcon} alt="" src="/div@2x.jpg" />
@@ -77,43 +97,32 @@ const Index = ({ Rendezvous, Designers, Agendadecodesigns, Selection }) => {
             </div>
           </div>
         </div>
-        <div className={styles.selections1}>
-          <img className={styles.divIcon} alt="" src="/div1@2x.jpg" />
-          <div className={styles.div54}>
-            <div className={styles.text92}>
-              {Selection["attributes"]["titre"]}
-            </div>
-            <div className={styles.boutons8} onClick={onBoutonsContainerClick}>
-              <div className={styles.div4}>
-                <img className={styles.laurelIcon} alt="" src="/frame31.svg" />
-                <div className={styles.text4}>Voir la sélection</div>
-              </div>
-              <img className={styles.icon} alt="" src="/frame17.svg" />
-            </div>
-          </div>
-        </div>
-        <div className={styles.div56}>
-          <div className={styles.div51}>
-            <img className={styles.divIcon} alt="" src="/div3@2x.jpg" />
-            <div className={styles.div52}>
-              <div className={styles.text92}>Les bougies parfumées</div>
-              <div
-                className={styles.boutons9}
-                onClick={onBoutonsContainerClick}
-              >
-                <div className={styles.div4}>
-                  <img
-                    className={styles.laurelIcon}
-                    alt=""
-                    src="/frame31.svg"
-                  />
-                  <div className={styles.text4}>Découvrir</div>
+        {Freesections.map((freesection, index) => (
+          <div className={styles.div56}>
+            <div className={styles.div51}>
+              <img className={styles.divIcon} alt="" src="/div3@2x.jpg" />
+              <div className={styles.div52}>
+                <div className={styles.text92}>
+                  {freesection["attributes"]["titre"]}
                 </div>
-                <img className={styles.icon} alt="" src="/frame14.svg" />
+                <div
+                  className={styles.boutons9}
+                  onClick={onBoutonsContainerClick}
+                >
+                  <div className={styles.div4}>
+                    <img
+                      className={styles.laurelIcon}
+                      alt=""
+                      src="/frame31.svg"
+                    />
+                    <div className={styles.text4}>Découvrir</div>
+                  </div>
+                  <img className={styles.icon} alt="" src="/frame14.svg" />
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        ))}
       </div>
       <div className={styles.div60}>
         <div className={styles.div61}>

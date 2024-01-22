@@ -1,39 +1,12 @@
 import { useCallback } from "react";
 import { useRouter } from "next/router";
 import styles from "../../pages/index.module.css";
+import he from "he";
 
 const CommuniquesDePresseList = ({ Communiques }) => {
   const router = useRouter();
 
   const onPressReleasClick = useCallback(() => {
-    router.push("/Cpp");
-  }, [router]);
-
-  const onPressReleas1Click = useCallback(() => {
-    router.push("/Cpp");
-  }, [router]);
-
-  const onPressReleas2Click = useCallback(() => {
-    router.push("/Cpp");
-  }, [router]);
-
-  const onPressReleas3Click = useCallback(() => {
-    router.push("/Cpp");
-  }, [router]);
-
-  const onPressReleas4Click = useCallback(() => {
-    router.push("/Cpp");
-  }, [router]);
-
-  const onPressReleas5Click = useCallback(() => {
-    router.push("/Cpp");
-  }, [router]);
-
-  const onPressReleas6Click = useCallback(() => {
-    router.push("/Cpp");
-  }, [router]);
-
-  const onPressReleas7Click = useCallback(() => {
     router.push("/Cpp");
   }, [router]);
 
@@ -65,7 +38,7 @@ const CommuniquesDePresseList = ({ Communiques }) => {
               <div
                 className={styles.text83}
                 dangerouslySetInnerHTML={{
-                  __html: communique["attributes"]["description"],
+                  __html: he.decode(communique["attributes"]["description"]),
                 }}
               />
             </div>
