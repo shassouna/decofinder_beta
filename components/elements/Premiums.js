@@ -102,6 +102,7 @@ const Premiums = () => {
           <div className={styles.pagination}>
             {images.map((image, index) => (
               <div
+                key={index}
                 className={styles.div86}
                 onClick={() => handlePaginationClick(index + 1)}
               >

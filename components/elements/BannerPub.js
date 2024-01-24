@@ -1,19 +1,17 @@
-const BannerPub = () => {
-  return (
+const BannerPub = ({ bannieres }) => {
+  return bannieres.map((banniere, index) => (
     <aside
+      key={banniere["id"]}
       id="bannerPub"
       className="top-banniere"
       style={{ background: "#FEFEFE" }}
     >
       <figure className="figure_vignette">
-        <span
-          className="lazyload unProduitGo web blank"
-          title="Paris Deco Off "
-        >
+        <span>
           <picture className="vignette_picture">
             <img
-              src="https://s3.decofinder.com/0/0/bdpBanner/_bandeaux/135/135693/.jpg"
-              alt="Paris Deco Off "
+              src={banniere["attributes"]["image"]["data"]["attributes"]["url"]}
+              alt=""
               className="vignette_image ls-is-cached lazyloaded"
               loading="lazy"
             />
@@ -21,7 +19,7 @@ const BannerPub = () => {
         </span>
       </figure>
     </aside>
-  );
+  ));
 };
 
 export default BannerPub;

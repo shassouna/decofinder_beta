@@ -990,7 +990,6 @@
   align-items: center;
 }
 .suitedesriptif {
-  align-self: stretch;
   background-color: var(--vertclair);
   justify-content: center;
   padding: var(--padding-31xl) var(--padding-width);
@@ -998,6 +997,8 @@
   font-size: var(--textlargebold-size);
   color: var(--base-dark-green);
   font-family: var(--ancien-base-textbaseboldordi);
+  margin-bottom: 50px;
+  border-radius: 0px;
 }
 .u {
   position: relative;

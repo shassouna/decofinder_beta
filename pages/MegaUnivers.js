@@ -7,7 +7,6 @@ import axios from "axios";
 let Items = ["Su"];
 
 const MegaUnivers = ({ Superunivers, Univers }) => {
-  console.log(Univers);
   const router = useRouter();
 
   const onCardClick = useCallback(() => {
@@ -61,7 +60,6 @@ const MegaUnivers = ({ Superunivers, Univers }) => {
               <h1 className={styles.text1}>
                 {Superunivers["attributes"]["LIB"]}
               </h1>
-              <div className={styles.productsnumber}>(9 produits)</div>
             </div>
           </div>
           <img className={styles.divChild} alt="" src="/vector-5.svg" />
@@ -75,7 +73,9 @@ const MegaUnivers = ({ Superunivers, Univers }) => {
       </section>
       <section className={styles.universsuperunivers}>
         <div className={styles.div3}>
-          <h2 className={styles.title1}>Les univers bricolage</h2>
+          <h2 className={styles.title1}>
+            Les univers {Superunivers["attributes"]["LIB"]}
+          </h2>
         </div>
         <div className={styles.univers}>
           {Univers.map((univer, index) => (
@@ -100,27 +100,14 @@ const MegaUnivers = ({ Superunivers, Univers }) => {
           ))}
         </div>
       </section>
-      <section className={styles.universsuperunivers}>
-        <CategoriesList
-          title="COUTELLERIE"
-          nbProducts={1061}
-          title2="Les catégories"
-        />
-      </section>
-      <section className={styles.universsuperunivers}>
-        <CategoriesList
-          title="ACCESSOIRES DE TABLE (1373 Produits)"
-          nbProducts={2049}
-          title2="Les catégories"
-        />
-      </section>
-      <section className={styles.universsuperunivers}>
-        <CategoriesList
-          title="VAISSELLE (3147 Produits)"
-          nbProducts={6871}
-          title2="Les catégories"
-        />
-      </section>
+      {Univers.map((univer, index) => (
+        <section className={styles.universsuperunivers}>
+          <CategoriesList
+            title2={`Les catégories ${univer["attributes"]["LIB"]}`}
+            Categories={univer["attributes"]["categories"]["data"]}
+          />
+        </section>
+      ))}
     </div>
   );
 };
@@ -134,7 +121,11 @@ export async function getStaticProps() {
   try {
     // QUERIES
     const querySuperunivers = qs.stringify({
-      populate: ["univers.image", "univers.categories.image"],
+      populate: [
+        "univers.image",
+        "univers.categories.image",
+        "univers.categories.typeprods",
+      ],
       locale: "fr",
     });
     // URLS

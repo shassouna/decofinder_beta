@@ -289,8 +289,8 @@
 .imgIcon {
   border-radius: var(--br-base) var(--br-base) 0 0;
   max-width: 100%;
-  max-height: 100%;
   object-fit: cover;
+  height: 257px;
 }
 .title3 {
   position: relative;
@@ -328,6 +328,8 @@
   cursor: pointer;
 }
 .div17 {
+  height: 120px;
+  overflow-y: scroll;
   flex-direction: column;
   align-items: flex-start;
 }

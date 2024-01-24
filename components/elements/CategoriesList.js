@@ -2,7 +2,7 @@ import { useCallback } from "react";
 import { useRouter } from "next/router";
 import styles from "../../pages/MegaUnivers.module.css";
 
-const CategoriesList = ({ title, title2, nbProducts }) => {
+const CategoriesList = ({ title, title2, nbProducts, Categories }) => {
   const router = useRouter();
 
   const onImgImageClick = useCallback(() => {
@@ -35,321 +35,51 @@ const CategoriesList = ({ title, title2, nbProducts }) => {
         </div>
       )}
       <div className={styles.univers}>
-        <article className={styles.card9}>
-          <img
-            className={styles.imgIcon}
-            alt=""
-            src="/img12@2x.jpg"
-            onClick={onImgImageClick}
-          />
-          <div className={styles.div15}>
-            <div className={styles.div16}>
-              <div className={styles.div17}>
-                <div className={styles.title3} onClick={onTitleTextClick}>
-                  Deetjen Orfevre
+        {Categories.map((Category, index) => (
+          <article key={Category["id"]} className={styles.card9}>
+            <img
+              className={styles.imgIcon}
+              alt=""
+              src={`${Category["attributes"]["image"]["data"]["attributes"]["url"]}`}
+              onClick={onImgImageClick}
+            />
+            <div className={styles.div15}>
+              <div className={styles.div16}>
+                <div className={styles.div17}>
+                  <div className={styles.title3} onClick={onTitleTextClick}>
+                    {Category["attributes"]["LIB"]}
+                  </div>
+                  {Category["attributes"]["typeprods"]["data"].map(
+                    (typeprod, index) => (
+                      <div
+                        key={typeprod["id"]}
+                        className={styles.div18}
+                        onClick={onDivContainerClick}
+                      >
+                        <img
+                          className={styles.divItem}
+                          alt=""
+                          src={"/ellipse-6.svg"}
+                        />
+                        <div className={styles.typeprod}>
+                          {`${typeprod["attributes"]["LIB"]} (${typeprod["attributes"]["produits"]["data"].length})`}
+                        </div>
+                      </div>
+                    )
+                  )}
                 </div>
-                <div className={styles.div18} onClick={onDivContainerClick}>
-                  <img className={styles.divItem} alt="" src="/ellipse-6.svg" />
-                  <div className={styles.typeprod}>Déboucheur (16)</div>
-                </div>
-                <div className={styles.div18} onClick={onDivContainerClick}>
-                  <img className={styles.divItem} alt="" src="/ellipse-6.svg" />
-                  <div className={styles.typeprod}>Déboucheur (16)</div>
-                </div>
-                <div className={styles.div18} onClick={onDivContainerClick}>
-                  <img className={styles.divItem} alt="" src="/ellipse-6.svg" />
-                  <div className={styles.typeprod}>Déboucheur (16)</div>
-                </div>
-                <div className={styles.div18} onClick={onDivContainerClick}>
-                  <img className={styles.divItem} alt="" src="/ellipse-6.svg" />
-                  <div className={styles.typeprod}>Déboucheur (16)</div>
-                </div>
+                <img
+                  className={styles.vectorIcon}
+                  alt=""
+                  src="/vector-16.svg"
+                />
+                {nbProducts && (
+                  <div className={styles.productsnumber2}>100 produits</div>
+                )}
               </div>
-              <img className={styles.vectorIcon} alt="" src="/vector-16.svg" />
-              <div className={styles.productsnumber2}>100 produits</div>
             </div>
-          </div>
-        </article>
-        <article className={styles.card9}>
-          <img
-            className={styles.imgIcon}
-            alt=""
-            src="/img12@2x.jpg"
-            onClick={onImgImageClick}
-          />
-          <div className={styles.div15}>
-            <div className={styles.div16}>
-              <div className={styles.div17}>
-                <div className={styles.title3} onClick={onTitleTextClick}>
-                  Deetjen Orfevre
-                </div>
-                <div className={styles.div18} onClick={onDivContainerClick}>
-                  <img className={styles.divItem} alt="" src="/ellipse-6.svg" />
-                  <div className={styles.typeprod}>Déboucheur (16)</div>
-                </div>
-                <div className={styles.div18} onClick={onDivContainerClick}>
-                  <img className={styles.divItem} alt="" src="/ellipse-6.svg" />
-                  <div className={styles.typeprod}>Déboucheur (16)</div>
-                </div>
-                <div className={styles.div18} onClick={onDivContainerClick}>
-                  <img className={styles.divItem} alt="" src="/ellipse-6.svg" />
-                  <div className={styles.typeprod}>Déboucheur (16)</div>
-                </div>
-                <div className={styles.div18} onClick={onDivContainerClick}>
-                  <img className={styles.divItem} alt="" src="/ellipse-6.svg" />
-                  <div className={styles.typeprod}>Déboucheur (16)</div>
-                </div>
-              </div>
-              <img className={styles.vectorIcon} alt="" src="/vector-16.svg" />
-              <div className={styles.productsnumber2}>100 produits</div>
-            </div>
-          </div>
-        </article>
-        <article className={styles.card9}>
-          <img
-            className={styles.imgIcon}
-            alt=""
-            src="/img12@2x.jpg"
-            onClick={onImgImageClick}
-          />
-          <div className={styles.div15}>
-            <div className={styles.div16}>
-              <div className={styles.div17}>
-                <div className={styles.title3} onClick={onTitleTextClick}>
-                  Deetjen Orfevre
-                </div>
-                <div className={styles.div18} onClick={onDivContainerClick}>
-                  <img className={styles.divItem} alt="" src="/ellipse-6.svg" />
-                  <div className={styles.typeprod}>Déboucheur (16)</div>
-                </div>
-                <div className={styles.div18} onClick={onDivContainerClick}>
-                  <img className={styles.divItem} alt="" src="/ellipse-6.svg" />
-                  <div className={styles.typeprod}>Déboucheur (16)</div>
-                </div>
-                <div className={styles.div18} onClick={onDivContainerClick}>
-                  <img className={styles.divItem} alt="" src="/ellipse-6.svg" />
-                  <div className={styles.typeprod}>Déboucheur (16)</div>
-                </div>
-                <div className={styles.div18} onClick={onDivContainerClick}>
-                  <img className={styles.divItem} alt="" src="/ellipse-6.svg" />
-                  <div className={styles.typeprod}>Déboucheur (16)</div>
-                </div>
-              </div>
-              <img className={styles.vectorIcon} alt="" src="/vector-16.svg" />
-              <div className={styles.productsnumber2}>100 produits</div>
-            </div>
-          </div>
-        </article>
-        <article className={styles.card9}>
-          <img
-            className={styles.imgIcon}
-            alt=""
-            src="/img12@2x.jpg"
-            onClick={onImgImageClick}
-          />
-          <div className={styles.div15}>
-            <div className={styles.div16}>
-              <div className={styles.div17}>
-                <div className={styles.title3} onClick={onTitleTextClick}>
-                  Deetjen Orfevre
-                </div>
-                <div className={styles.div18} onClick={onDivContainerClick}>
-                  <img className={styles.divItem} alt="" src="/ellipse-6.svg" />
-                  <div className={styles.typeprod}>Déboucheur (16)</div>
-                </div>
-                <div className={styles.div18} onClick={onDivContainerClick}>
-                  <img className={styles.divItem} alt="" src="/ellipse-6.svg" />
-                  <div className={styles.typeprod}>Déboucheur (16)</div>
-                </div>
-                <div className={styles.div18} onClick={onDivContainerClick}>
-                  <img className={styles.divItem} alt="" src="/ellipse-6.svg" />
-                  <div className={styles.typeprod}>Déboucheur (16)</div>
-                </div>
-                <div className={styles.div18} onClick={onDivContainerClick}>
-                  <img className={styles.divItem} alt="" src="/ellipse-6.svg" />
-                  <div className={styles.typeprod}>Déboucheur (16)</div>
-                </div>
-              </div>
-              <img className={styles.vectorIcon} alt="" src="/vector-16.svg" />
-              <div className={styles.productsnumber2}>100 produits</div>
-            </div>
-          </div>
-        </article>
-        <article className={styles.card9}>
-          <img
-            className={styles.imgIcon}
-            alt=""
-            src="/img12@2x.jpg"
-            onClick={onImgImageClick}
-          />
-          <div className={styles.div15}>
-            <div className={styles.div16}>
-              <div className={styles.div17}>
-                <div className={styles.title3} onClick={onTitleTextClick}>
-                  Deetjen Orfevre
-                </div>
-                <div className={styles.div18} onClick={onDivContainerClick}>
-                  <img className={styles.divItem} alt="" src="/ellipse-6.svg" />
-                  <div className={styles.typeprod}>Déboucheur (16)</div>
-                </div>
-                <div className={styles.div18} onClick={onDivContainerClick}>
-                  <img className={styles.divItem} alt="" src="/ellipse-6.svg" />
-                  <div className={styles.typeprod}>Déboucheur (16)</div>
-                </div>
-                <div className={styles.div18} onClick={onDivContainerClick}>
-                  <img className={styles.divItem} alt="" src="/ellipse-6.svg" />
-                  <div className={styles.typeprod}>Déboucheur (16)</div>
-                </div>
-                <div className={styles.div18} onClick={onDivContainerClick}>
-                  <img className={styles.divItem} alt="" src="/ellipse-6.svg" />
-                  <div className={styles.typeprod}>Déboucheur (16)</div>
-                </div>
-              </div>
-              <img className={styles.vectorIcon} alt="" src="/vector-16.svg" />
-              <div className={styles.productsnumber2}>100 produits</div>
-            </div>
-          </div>
-        </article>
-        <article className={styles.card9}>
-          <img
-            className={styles.imgIcon}
-            alt=""
-            src="/img12@2x.jpg"
-            onClick={onImgImageClick}
-          />
-          <div className={styles.div15}>
-            <div className={styles.div16}>
-              <div className={styles.div17}>
-                <div className={styles.title3} onClick={onTitleTextClick}>
-                  Deetjen Orfevre
-                </div>
-                <div className={styles.div18} onClick={onDivContainerClick}>
-                  <img className={styles.divItem} alt="" src="/ellipse-6.svg" />
-                  <div className={styles.typeprod}>Déboucheur (16)</div>
-                </div>
-                <div className={styles.div18} onClick={onDivContainerClick}>
-                  <img className={styles.divItem} alt="" src="/ellipse-6.svg" />
-                  <div className={styles.typeprod}>Déboucheur (16)</div>
-                </div>
-                <div className={styles.div18} onClick={onDivContainerClick}>
-                  <img className={styles.divItem} alt="" src="/ellipse-6.svg" />
-                  <div className={styles.typeprod}>Déboucheur (16)</div>
-                </div>
-                <div className={styles.div18} onClick={onDivContainerClick}>
-                  <img className={styles.divItem} alt="" src="/ellipse-6.svg" />
-                  <div className={styles.typeprod}>Déboucheur (16)</div>
-                </div>
-              </div>
-              <img className={styles.vectorIcon} alt="" src="/vector-16.svg" />
-              <div className={styles.productsnumber2}>100 produits</div>
-            </div>
-          </div>
-        </article>
-        <article className={styles.card9}>
-          <img
-            className={styles.imgIcon}
-            alt=""
-            src="/img12@2x.jpg"
-            onClick={onImgImageClick}
-          />
-          <div className={styles.div15}>
-            <div className={styles.div16}>
-              <div className={styles.div17}>
-                <div className={styles.title3} onClick={onTitleTextClick}>
-                  Deetjen Orfevre
-                </div>
-                <div className={styles.div18} onClick={onDivContainerClick}>
-                  <img className={styles.divItem} alt="" src="/ellipse-6.svg" />
-                  <div className={styles.typeprod}>Déboucheur (16)</div>
-                </div>
-                <div className={styles.div18} onClick={onDivContainerClick}>
-                  <img className={styles.divItem} alt="" src="/ellipse-6.svg" />
-                  <div className={styles.typeprod}>Déboucheur (16)</div>
-                </div>
-                <div className={styles.div18} onClick={onDivContainerClick}>
-                  <img className={styles.divItem} alt="" src="/ellipse-6.svg" />
-                  <div className={styles.typeprod}>Déboucheur (16)</div>
-                </div>
-                <div className={styles.div18} onClick={onDivContainerClick}>
-                  <img className={styles.divItem} alt="" src="/ellipse-6.svg" />
-                  <div className={styles.typeprod}>Déboucheur (16)</div>
-                </div>
-              </div>
-              <img className={styles.vectorIcon} alt="" src="/vector-16.svg" />
-              <div className={styles.productsnumber2}>100 produits</div>
-            </div>
-          </div>
-        </article>
-        <article className={styles.card9}>
-          <img
-            className={styles.imgIcon}
-            alt=""
-            src="/img12@2x.jpg"
-            onClick={onImgImageClick}
-          />
-          <div className={styles.div15}>
-            <div className={styles.div16}>
-              <div className={styles.div17}>
-                <div className={styles.title3} onClick={onTitleTextClick}>
-                  Deetjen Orfevre
-                </div>
-                <div className={styles.div18} onClick={onDivContainerClick}>
-                  <img className={styles.divItem} alt="" src="/ellipse-6.svg" />
-                  <div className={styles.typeprod}>Déboucheur (16)</div>
-                </div>
-                <div className={styles.div18} onClick={onDivContainerClick}>
-                  <img className={styles.divItem} alt="" src="/ellipse-6.svg" />
-                  <div className={styles.typeprod}>Déboucheur (16)</div>
-                </div>
-                <div className={styles.div18} onClick={onDivContainerClick}>
-                  <img className={styles.divItem} alt="" src="/ellipse-6.svg" />
-                  <div className={styles.typeprod}>Déboucheur (16)</div>
-                </div>
-                <div className={styles.div18} onClick={onDivContainerClick}>
-                  <img className={styles.divItem} alt="" src="/ellipse-6.svg" />
-                  <div className={styles.typeprod}>Déboucheur (16)</div>
-                </div>
-              </div>
-              <img className={styles.vectorIcon} alt="" src="/vector-16.svg" />
-              <div className={styles.productsnumber2}>100 produits</div>
-            </div>
-          </div>
-        </article>
-        <article className={styles.card9}>
-          <img
-            className={styles.imgIcon}
-            alt=""
-            src="/img12@2x.jpg"
-            onClick={onImgImageClick}
-          />
-          <div className={styles.div15}>
-            <div className={styles.div16}>
-              <div className={styles.div17}>
-                <div className={styles.title3} onClick={onTitleTextClick}>
-                  Deetjen Orfevre
-                </div>
-                <div className={styles.div18} onClick={onDivContainerClick}>
-                  <img className={styles.divItem} alt="" src="/ellipse-6.svg" />
-                  <div className={styles.typeprod}>Déboucheur (16)</div>
-                </div>
-                <div className={styles.div18} onClick={onDivContainerClick}>
-                  <img className={styles.divItem} alt="" src="/ellipse-6.svg" />
-                  <div className={styles.typeprod}>Déboucheur (16)</div>
-                </div>
-                <div className={styles.div18} onClick={onDivContainerClick}>
-                  <img className={styles.divItem} alt="" src="/ellipse-6.svg" />
-                  <div className={styles.typeprod}>Déboucheur (16)</div>
-                </div>
-                <div className={styles.div18} onClick={onDivContainerClick}>
-                  <img className={styles.divItem} alt="" src="/ellipse-6.svg" />
-                  <div className={styles.typeprod}>Déboucheur (16)</div>
-                </div>
-              </div>
-              <img className={styles.vectorIcon} alt="" src="/vector-16.svg" />
-              <div className={styles.productsnumber2}>100 produits</div>
-            </div>
-          </div>
-        </article>
+          </article>
+        ))}
       </div>
     </>
   );
